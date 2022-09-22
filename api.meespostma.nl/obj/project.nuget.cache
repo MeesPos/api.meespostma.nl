@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "vmnszfAA3p2+5ubH6LTjg1r+zInMbOw9qffZZ0o3ko0th1btgGtH6baFjYAsrKhX5afN6BpitWSXUXIuXbQXOQ==",
+  "success": true,
+  "projectFilePath": "D:\\School\\Open-ICT\\api.meespostma.nl\\api.meespostma.nl\\api.meespostma.nl.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\meesp\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\meesp\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\meesp\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\meesp\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\meesp\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\meesp\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
