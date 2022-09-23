@@ -10,6 +10,7 @@ namespace api.meespostma.nl.Configurations
         {
             CreateMap<ProjectCreateDto, Project>().ReverseMap();
             CreateMap<ProjectReadOnlyDto, Project>().ReverseMap();
+            CreateMap<ProjectUpdateDto, Project>().ReverseMap();
         }
     }
 }

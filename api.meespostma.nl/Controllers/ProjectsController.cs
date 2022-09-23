@@ -71,28 +71,38 @@ namespace api.meespostma.nl.Controllers
         // PUT: api/Projects/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProject(int id, Project project)
+        public async Task<IActionResult> PutProject(int id, ProjectUpdateDto projectDto)
         {
-            if (id != project.Id)
+            if (id != projectDto.Id)
             {
                 return BadRequest();
             }
 
+            var project = await _context.Projects.FindAsync(id);
+
+            if (project == null)
+            {
+                return NotFound();
+            }
+
+            mapper.Map(projectDto, project);
             _context.Entry(project).State = EntityState.Modified;
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException ex)
             {
-                if (!ProjectExists(id))
+                if (!await ProjectExists(id))
                 {
                     return NotFound();
                 }
                 else
                 {
-                    throw;
+                    logger.LogError(ex, $"Error Performing GET in {nameof(PutProject)}");
+
+                    return StatusCode(500, Messages.Error500Message);
                 }
             }
 
@@ -135,9 +145,9 @@ namespace api.meespostma.nl.Controllers
             return NoContent();
         }
 
-        private bool ProjectExists(int id)
+        private async Task<bool> ProjectExists(int id)
         {
-            return _context.Projects.Any(e => e.Id == id);
+            return await _context.Projects.AnyAsync(e => e.Id == id);
         }
     }
 }
