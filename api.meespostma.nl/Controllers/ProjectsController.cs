@@ -10,7 +10,7 @@ using api.meespostma.nl.Data;
 namespace api.meespostma.nl.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController]     
     public class ProjectsController : ControllerBase
     {
         private readonly ApiMeesPostmaContext _context;
