@@ -29,23 +29,43 @@ namespace api.meespostma.nl.Controllers
 
         // GET: api/Projects
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
+        public async Task<ActionResult<IEnumerable<ProjectReadOnlyDto>>> GetProjects()
         {
-            return await _context.Projects.ToListAsync();
+            try
+            {
+                var projectDtos = mapper.Map<IEnumerable<ProjectReadOnlyDto>>(await _context.Projects.ToListAsync());
+                
+                return Ok(projectDtos);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, $"Error Performing GET in {nameof(GetProjects)}");
+
+                return StatusCode(500, Messages.Error500Message);
+            }
         }
 
         // GET: api/Projects/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Project>> GetProject(int id)
+        public async Task<ActionResult<ProjectReadOnlyDto>> GetProject(int id)
         {
-            var project = await _context.Projects.FindAsync(id);
-
-            if (project == null)
+            try
             {
-                return NotFound();
-            }
+                var project = await _context.Projects.FindAsync(id);
 
-            return project;
+                if (project == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(mapper.Map<ProjectReadOnlyDto>(project));
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, $"Error Performing GET in {nameof(GetProject)}");
+
+                return StatusCode(500, Messages.Error500Message);
+            }
         }
 
         // PUT: api/Projects/5
