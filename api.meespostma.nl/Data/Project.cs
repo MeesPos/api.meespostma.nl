@@ -10,6 +10,6 @@ namespace api.meespostma.nl.Data
         public string Description { get; set; } = null!;
         public string Url { get; set; } = null!;
         public string UrlPlaceholder { get; set; } = null!;
-        public byte[]? Logo { get; set; }
+        public string? Logo { get; set; }
     }
 }

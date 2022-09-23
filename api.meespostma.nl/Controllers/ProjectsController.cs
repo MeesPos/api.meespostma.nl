@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using api.meespostma.nl.Data;
+using api.meespostma.nl.Models.Projects;
+using AutoMapper;
+using api.meespostma.nl.Static;
 
 namespace api.meespostma.nl.Controllers
 {
@@ -14,10 +17,14 @@ namespace api.meespostma.nl.Controllers
     public class ProjectsController : ControllerBase
     {
         private readonly ApiMeesPostmaContext _context;
+        private readonly IMapper mapper;
+        private readonly ILogger<ProjectsController> logger;
 
-        public ProjectsController(ApiMeesPostmaContext context)
+        public ProjectsController(ApiMeesPostmaContext context, IMapper mapper, ILogger<ProjectsController> logger)
         {
             _context = context;
+            this.mapper = mapper;
+            this.logger = logger;
         }
 
         // GET: api/Projects
@@ -75,12 +82,21 @@ namespace api.meespostma.nl.Controllers
         // POST: api/Projects
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Project>> PostProject(Project project)
+        public async Task<ActionResult<ProjectCreateDto>> PostProject(ProjectCreateDto projectDto)
         {
-            _context.Projects.Add(project);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var project = mapper.Map<Project>(projectDto);
+                await _context.Projects.AddAsync(project);
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProject", new { id = project.Id }, project);
+                return CreatedAtAction(nameof(GetProject), new { id = project.Id }, project);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, $"Error Performing POST in {nameof(PostProject)}", projectDto);
+                return StatusCode(500, Messages.Error500Message);
+            }
         }
 
         // DELETE: api/Projects/5

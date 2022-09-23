@@ -6,6 +6,9 @@ namespace api.meespostma.nl.Configurations
 {
     public class MapperConfig : Profile
     {
-        CreateMap<ProjectCreateDto, Project>().ReverseMap();
+        public MapperConfig()
+        {
+            CreateMap<ProjectCreateDto, Project>().ReverseMap();
+        }
     }
 }
