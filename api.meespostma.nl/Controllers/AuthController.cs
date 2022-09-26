@@ -43,7 +43,7 @@ namespace BookStoreApp.API.Controllers
 
                 if (user == null || passwordValid == false)
                 {
-                    return Unauthorized(userDto);
+                    return Unauthorized();
                 }
 
                 string tokenString = await GenerateToken(user);
