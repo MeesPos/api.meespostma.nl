@@ -1,7 +1,7 @@
-﻿using AutoMapper;
-using BookStoreApp.API.Data;
-using BookStoreApp.API.Models.User;
-using BookStoreApp.API.Static;
+﻿using api.meespostma.nl.Data;
+using api.meespostma.nl.Models.User;
+using api.meespostma.nl.Static;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -35,8 +35,6 @@ namespace BookStoreApp.API.Controllers
         [Route("login")]
         public async Task<ActionResult<AuthResponse>> Login(LoginUserDto userDto)
         {
-            logger.LogInformation($"Login Attempt for {userDto.Email}");
-
             try
             {
                 var user = await userManager.FindByEmailAsync(userDto.Email);
