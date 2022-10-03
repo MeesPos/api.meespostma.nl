@@ -19,12 +19,14 @@ namespace api.meespostma.nl.Controllers
         private readonly ApiMeesPostmaContext _context;
         private readonly IMapper mapper;
         private readonly ILogger<ProjectsController> logger;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public ProjectsController(ApiMeesPostmaContext context, IMapper mapper, ILogger<ProjectsController> logger)
+        public ProjectsController(ApiMeesPostmaContext context, IMapper mapper, ILogger<ProjectsController> logger, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             this.mapper = mapper;
             this.logger = logger;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         // GET: api/Projects
@@ -85,6 +87,19 @@ namespace api.meespostma.nl.Controllers
                 return NotFound();
             }
 
+            if (string.IsNullOrEmpty(projectDto.Logo) == false)
+            {
+                projectDto.Logo = CreateFile(projectDto.Logo, projectDto.OriginalLogoName);
+
+                var picName = Path.GetFileName(project.Logo);
+                var path = $"{webHostEnvironment.WebRootPath}\\projectlogos\\{picName}";
+
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+            }
+
             mapper.Map(projectDto, project);
             _context.Entry(project).State = EntityState.Modified;
 
@@ -117,6 +132,12 @@ namespace api.meespostma.nl.Controllers
             try
             {
                 var project = mapper.Map<Project>(projectDto);
+
+                if (string.IsNullOrEmpty(projectDto.Logo) == false)
+                {
+                    project.Logo = CreateFile(projectDto.Logo, projectDto.OriginalLogoName);
+                }
+
                 await _context.Projects.AddAsync(project);
                 await _context.SaveChangesAsync();
 
@@ -143,6 +164,23 @@ namespace api.meespostma.nl.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        private string CreateFile(string imageBase64, string imageName)
+        {
+            var url = HttpContext.Request.Host.Value;
+            var ext = Path.GetExtension(imageName);
+            var fileName = $"{Guid.NewGuid()}{ext}";
+
+            var path = $"{webHostEnvironment.WebRootPath}\\projectlogos\\{fileName}";
+
+            byte[] image = Convert.FromBase64String(imageBase64);
+
+            var fileStream = System.IO.File.Create(path);
+            fileStream.Write(image, 0, image.Length);
+            fileStream.Close();
+
+            return $"https://{url}/projectlogos/{fileName}";
         }
 
         private async Task<bool> ProjectExists(int id)

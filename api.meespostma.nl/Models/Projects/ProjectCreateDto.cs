@@ -15,8 +15,8 @@ namespace api.meespostma.nl.Models.Projects
 
             [Required, MaxLength(50)]
             public string UrlPlaceholder { get; set; }
-
-            [Required]
-            public string Logo { get; set; }
+        
+            public string? Logo { get; set; }
+            public string? OriginalLogoName { get; set; }
     }
 }

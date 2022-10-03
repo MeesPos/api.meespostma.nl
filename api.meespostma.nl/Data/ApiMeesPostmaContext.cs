@@ -31,7 +31,7 @@ namespace api.meespostma.nl.Data
             {
                 entity.Property(e => e.Description).HasColumnType("text");
 
-                entity.Property(e => e.Logo).HasColumnType("image");
+                entity.Property(e => e.Logo).HasMaxLength(250);
 
                 entity.Property(e => e.Name).HasMaxLength(50);
 
