@@ -1,10 +1,12 @@
 using api.meespostma.nl.Configurations;
 using api.meespostma.nl.Data;
+using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System.Net;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,10 @@ builder.Services.AddDbContext<ApiMeesPostmaContext>(options => options.UseSqlSer
 builder.Services.AddIdentityCore<ApiUser>()
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApiMeesPostmaContext>();
+
+builder.Services.AddAuthentication(
+        CertificateAuthenticationDefaults.AuthenticationScheme)
+    .AddCertificate();
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 
@@ -31,8 +37,8 @@ builder.Host.UseSerilog((ctx, lc) =>
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowAll",
         b => b.AllowAnyMethod()
-               .AllowAnyHeader()
-               .AllowAnyOrigin());
+              .AllowAnyHeader()
+              .AllowAnyOrigin());
 });
 
 builder.Services.AddAuthentication(options =>

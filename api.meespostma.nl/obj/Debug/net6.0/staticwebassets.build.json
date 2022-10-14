@@ -1,11 +1,88 @@
 {
   "Version": 1,
-  "Hash": "GWWrkBywBguB2wbL4KG9vJIs2lQmUqjC4NFDNhGTmgA=",
+  "Hash": "Adag2Ql8kqWNG9KAaA+LZDMmFLA8UflDxmP9LiElSXE=",
   "Source": "api.meespostma.nl",
   "BasePath": "_content/api.meespostma.nl",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "api.meespostma.nl\\wwwroot",
+      "Source": "api.meespostma.nl",
+      "ContentRoot": "D:\\School\\Open-ICT\\api.meespostma.nl\\api.meespostma.nl\\wwwroot\\",
+      "BasePath": "_content/api.meespostma.nl",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\School\\Open-ICT\\api.meespostma.nl\\api.meespostma.nl\\wwwroot\\projectlogos\\4c65ef0d-1bdd-4930-927b-23c95572f215.jpeg",
+      "SourceId": "api.meespostma.nl",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\School\\Open-ICT\\api.meespostma.nl\\api.meespostma.nl\\wwwroot\\",
+      "BasePath": "_content/api.meespostma.nl",
+      "RelativePath": "projectlogos/4c65ef0d-1bdd-4930-927b-23c95572f215.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\projectlogos\\4c65ef0d-1bdd-4930-927b-23c95572f215.jpeg"
+    },
+    {
+      "Identity": "D:\\School\\Open-ICT\\api.meespostma.nl\\api.meespostma.nl\\wwwroot\\projectlogos\\4e9167f5-f1e8-47d3-a8af-87454430a46c.JPG",
+      "SourceId": "api.meespostma.nl",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\School\\Open-ICT\\api.meespostma.nl\\api.meespostma.nl\\wwwroot\\",
+      "BasePath": "_content/api.meespostma.nl",
+      "RelativePath": "projectlogos/4e9167f5-f1e8-47d3-a8af-87454430a46c.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\projectlogos\\4e9167f5-f1e8-47d3-a8af-87454430a46c.JPG"
+    },
+    {
+      "Identity": "D:\\School\\Open-ICT\\api.meespostma.nl\\api.meespostma.nl\\wwwroot\\projectlogos\\5dcc5f98-049c-452b-9c4f-8caddf1240fa.jpeg",
+      "SourceId": "api.meespostma.nl",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\School\\Open-ICT\\api.meespostma.nl\\api.meespostma.nl\\wwwroot\\",
+      "BasePath": "_content/api.meespostma.nl",
+      "RelativePath": "projectlogos/5dcc5f98-049c-452b-9c4f-8caddf1240fa.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\projectlogos\\5dcc5f98-049c-452b-9c4f-8caddf1240fa.jpeg"
+    },
+    {
+      "Identity": "D:\\School\\Open-ICT\\api.meespostma.nl\\api.meespostma.nl\\wwwroot\\projectlogos\\b32ded95-616e-495e-9902-7bac0ab63d6b.jpeg",
+      "SourceId": "api.meespostma.nl",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\School\\Open-ICT\\api.meespostma.nl\\api.meespostma.nl\\wwwroot\\",
+      "BasePath": "_content/api.meespostma.nl",
+      "RelativePath": "projectlogos/b32ded95-616e-495e-9902-7bac0ab63d6b.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\projectlogos\\b32ded95-616e-495e-9902-7bac0ab63d6b.jpeg"
+    }
+  ]
 }

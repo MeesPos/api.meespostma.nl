@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Wzg4qoaUn9kF+P3i3SDUNOEq0soszPCVzibkPmpfwOjqR+ZKxUxVYrLKK+ovsdVMGZFwScn9tXhP0vFEXtt+OA==",
+  "dgSpecHash": "qUZaXdMTdSiWGu9vsy42AUbMe21MnWnZTr1zRcE3f6SGklMK2M0bJiw00hQX+saRkFSNL4Dfld/nQ9285rvhUA==",
   "success": true,
   "projectFilePath": "D:\\School\\Open-ICT\\api.meespostma.nl\\api.meespostma.nl\\api.meespostma.nl.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\meesp\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\meesp\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\meesp\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
+    "C:\\Users\\meesp\\.nuget\\packages\\microsoft.aspnetcore.authentication.certificate\\6.0.9\\microsoft.aspnetcore.authentication.certificate.6.0.9.nupkg.sha512",
     "C:\\Users\\meesp\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.9\\microsoft.aspnetcore.authentication.jwtbearer.6.0.9.nupkg.sha512",
     "C:\\Users\\meesp\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.9\\microsoft.aspnetcore.cryptography.internal.6.0.9.nupkg.sha512",
     "C:\\Users\\meesp\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.9\\microsoft.aspnetcore.cryptography.keyderivation.6.0.9.nupkg.sha512",
