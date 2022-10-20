@@ -284,3 +284,7 @@ D:\School\Open-ICT\api.meespostma.nl\api.meespostma.nl\bin\Debug\net6.0\Microsof
 D:\School\Open-ICT\api.meespostma.nl\api.meespostma.nl\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 D:\School\Open-ICT\api.meespostma.nl\api.meespostma.nl\bin\Debug\net6.0\api.meespostma.nl.staticwebassets.runtime.json
 D:\School\Open-ICT\api.meespostma.nl\api.meespostma.nl\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Certificate.dll
+D:\School\Open-ICT\api.meespostma.nl\api.meespostma.nl\bin\Debug\net6.0\published\api.meespostma.nl.deps.json
+D:\School\Open-ICT\api.meespostma.nl\api.meespostma.nl\bin\Debug\net6.0\published\api.meespostma.nl.runtimeconfig.json
+D:\School\Open-ICT\api.meespostma.nl\api.meespostma.nl\bin\Debug\net6.0\published\appsettings.Development.json
+D:\School\Open-ICT\api.meespostma.nl\api.meespostma.nl\bin\Debug\net6.0\published\appsettings.json
