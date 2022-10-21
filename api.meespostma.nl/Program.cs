@@ -42,6 +42,11 @@ builder.Services.AddCors(options => {
               .AllowAnyOrigin());
 });
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+});
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -80,7 +85,6 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
 }
-
 app.UseAuthentication();
 
 app.UseAuthorization();
