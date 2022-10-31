@@ -11,6 +11,11 @@ use Illuminate\Support\Str;
 
 class ProjectsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth:sanctum'])->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -109,11 +114,14 @@ class ProjectsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return bool
+     * @throws \Throwable
      */
     public function destroy($id)
     {
-        //
+        return Project::query()
+            ->findOrFail($id)
+            ->deleteOrFail();
     }
 }
