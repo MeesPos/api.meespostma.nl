@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProjectsController extends Controller
 {
@@ -31,23 +34,38 @@ class ProjectsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \App\Http\Requests\CreateProjectRequest  $request
+     * @return string
      */
-    public function store(Request $request)
+    public function store(CreateProjectRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $base64_image = $request->input('logo');
+
+        @list($type, $file_data) = explode(';', $base64_image);
+        @list(, $file_data) = explode(',', $file_data);
+
+        $imageName = Str::random(10).'.'.'png';
+
+        Storage::disk('public')->put($imageName, base64_decode($file_data));
+
+        $data['logo'] = Storage::disk('public')->url($imageName);;
+
+        return Project::query()
+            ->updateOrCreate($data);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        return Project::query()
+            ->findOrFail($id);
     }
 
     /**
@@ -64,13 +82,28 @@ class ProjectsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CreateProjectRequest  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return int
      */
-    public function update(Request $request, $id)
+    public function update(CreateProjectRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+
+        $base64_image = $request->input('logo');
+
+        @list($type, $file_data) = explode(';', $base64_image);
+        @list(, $file_data) = explode(',', $file_data);
+
+        $imageName = Str::random(10).'.'.'png';
+
+        Storage::disk('public')->put($imageName, base64_decode($file_data));
+
+        $data['logo'] = Storage::disk('public')->url($imageName);;
+
+        return Project::query()
+            ->findOrFail($id)
+            ->update($data);
     }
 
     /**
