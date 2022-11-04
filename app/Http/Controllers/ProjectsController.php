@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProjectRequest;
+use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -55,7 +56,9 @@ class ProjectsController extends Controller
 
         Storage::disk('public')->put($imageName, base64_decode($file_data));
 
-        $data['logo'] = Storage::disk('public')->url($imageName);;
+        $data['logo'] = Storage::disk('public')->url($imageName);
+
+        $data['description'] = json_encode($data['description']);
 
         return Project::query()
             ->updateOrCreate($data);
@@ -67,10 +70,11 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
-        return Project::query()
-            ->findOrFail($id);
+        return ProjectResource::make(Project::query()
+            ->findOrFail($id)
+        );
     }
 
     /**
