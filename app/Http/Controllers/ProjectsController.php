@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProjectRequest;
+use App\Http\Resources\ProjectCollection;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        return Project::all();
+        return ProjectCollection::make(Project::all());
     }
 
     /**
